@@ -392,17 +392,18 @@ def invoke_command(click_ctx: click.Context, command: str) -> None:
     click_ctx.invoke(cli.commands[name], *args, **opts)
 
 
-@cli.command()
-@click.pass_context
-def repl(ctx: click.Context) -> None:
-    """Start an interactive shell."""
-    try:
-        from click_repl import repl
+try:
+    from click_repl import repl as _repl
 
-        repl(ctx)
-    except ImportError as e:
-        click.echo(e)
-        sys.exit(-1)
+    @cli.command()
+    @click.pass_context
+    def repl(ctx: click.Context) -> None:
+        """Start an interactive shell."""
+
+        _repl(ctx)
+
+except ImportError:
+    pass
 
 
 @cli.command()
