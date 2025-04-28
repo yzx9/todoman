@@ -15,6 +15,7 @@ v4.7.0
 * Fix a time erroneously being added to the following instance when a recurring
   item is completed.
 * Add ``recurring`` and ``list_colour`` to JSON output.
+* Add a new `columns` option to enable column-aligned output.
 
 v4.6.0
 ------
